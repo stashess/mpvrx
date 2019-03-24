@@ -10,11 +10,17 @@ import android.view.ViewGroup;
 
 import com.test.mpv_rx.R;
 
-public class Fragment2 extends Fragment {
+public class Fragment2 extends AbstractFragment {
+
+    @Override
+    protected String getToolbarName() {
+        return "Fragment2";
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment2, container, false);
         return view;
     }

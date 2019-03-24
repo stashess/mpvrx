@@ -1,17 +1,18 @@
-package com.test.mpv_rx;
+package com.test.mpv_rx.activity;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.test.mpv_rx.R;
+import com.test.mpv_rx.RxApp;
+import com.test.mpv_rx.utils.Screens;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,11 +23,8 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
-
-    @BindView(R.id.nav_view)
-    NavigationView mNavigationView;
+    @BindView(R.id.navigation_view)
+    BottomNavigationView mNavigationView;
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     NavigatorHolder mNavigatorHolder;
 
-    Navigator mNavigator = new SupportAppNavigator(this,R.id.content_frame);
+    Navigator mNavigator = new SupportAppNavigator(this, R.id.content_frame);
 
     @Override
     protected void onPause() {
@@ -57,21 +55,21 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         mRouter = RxApp.INSTANCE.getRouter();
         mNavigatorHolder = RxApp.INSTANCE.getNavigationHolder();
-
-        mNavigationView.setNavigationItemSelectedListener(menuItem -> {
-            if (menuItem.getItemId() == R.id.f1){
-              mRouter.navigateTo(new Screens.Fragment1Screen());
-            } else if (menuItem.getItemId() == R.id.f2){
+        Toast test = Toast.makeText(this, "test", Toast.LENGTH_SHORT);
+        test.show();
+        mNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.f1) {
+                mRouter.navigateTo(new Screens.Fragment1Screen());
+            } else if (menuItem.getItemId() == R.id.f2) {
                 mRouter.navigateTo(new Screens.Fragment2Screen());
+            } else if (menuItem.getItemId() == R.id.f3) {
+                mRouter.navigateTo(new Screens.Fragment3Screen());
             }
-
-            mDrawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
-        mRouter.newRootScreen(new Screens.FragmentHelloScreen());
 
+        mRouter.newRootScreen(new Screens.Fragment2Screen());
     }
-
 
 
     @Override
@@ -96,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
+    public Toolbar getToolbar() {
+        return mToolbar;
+    }
 }

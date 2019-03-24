@@ -3,19 +3,25 @@ package com.test.mpv_rx.fragment;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.test.mpv_rx.R;
 
-public class HelloFragment extends Fragment {
+public class Fragment3 extends AbstractFragment {
+
+    @Override
+    protected String getToolbarName() {
+        return "Fragment3";
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.hello_fragment, container, false);
+        super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment3, container, false);
         return view;
     }
 }

@@ -6,4 +6,8 @@
     <item android:title="Fragment2" android:id="@+id/f2">
 
     </item>
+
+    <item android:title="Fragment3" android:id="@+id/f3">
+
+    </item>
 </menu>
