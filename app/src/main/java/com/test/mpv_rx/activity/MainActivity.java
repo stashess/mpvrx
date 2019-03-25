@@ -14,6 +14,8 @@ import com.test.mpv_rx.R;
 import com.test.mpv_rx.RxApp;
 import com.test.mpv_rx.utils.Screens;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.terrakok.cicerone.Cicerone;
@@ -30,11 +32,15 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    @Inject
     Router mRouter;
 
+    @Inject
     NavigatorHolder mNavigatorHolder;
 
     Navigator mNavigator = new SupportAppNavigator(this, R.id.content_frame);
+
+
 
     @Override
     protected void onPause() {
@@ -48,14 +54,13 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-        mRouter = RxApp.INSTANCE.getRouter();
-        mNavigatorHolder = RxApp.INSTANCE.getNavigationHolder();
         Toast test = Toast.makeText(this, "test", Toast.LENGTH_SHORT);
         test.show();
         mNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
