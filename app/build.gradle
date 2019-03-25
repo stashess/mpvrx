@@ -87,4 +87,8 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
 
+    implementation 'com.google.android.gms:play-services-vision:15.0.0'
+
+
+
 }

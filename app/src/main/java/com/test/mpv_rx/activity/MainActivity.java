@@ -16,6 +16,7 @@ import com.test.mpv_rx.utils.Screens;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ru.terrakok.cicerone.Cicerone;
 import ru.terrakok.cicerone.Navigator;
 import ru.terrakok.cicerone.NavigatorHolder;
 import ru.terrakok.cicerone.Router;
@@ -94,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public Toolbar getToolbar() {
-        return mToolbar;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mRouter.exit();
     }
 }
